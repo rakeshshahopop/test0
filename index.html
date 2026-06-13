@@ -274,6 +274,195 @@ input[type="date"] {
 }
 
 @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ============================================================
+   MOBILE RESPONSIVE OVERRIDES
+   Added for small screens — does not remove/alter desktop styles
+   ============================================================ */
+@media (max-width: 768px) {
+
+  body {
+    overflow: auto; /* allow page scrolling on mobile */
+  }
+
+  .app {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    width: 100%;
+    overflow: visible;
+  }
+
+  /* Sidebar becomes a top horizontal bar instead of a left rail */
+  .sidebar {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 12px 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+  }
+
+  .sidebar-logo {
+    padding: 0 16px;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  /* Hide section labels and stack nav items horizontally for scroll */
+  .nav-section {
+    display: none;
+  }
+
+  .nav-item {
+    padding: 10px 14px;
+    font-size: 13px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    gap: 6px;
+  }
+  .nav-item.active::after {
+    display: none; /* right-border indicator doesn't make sense horizontally */
+  }
+  .nav-item.active {
+    border-bottom: 2px solid var(--clr-purple);
+  }
+
+  /* Hide developer/dev-mode panel on mobile (still present in DOM, just hidden) */
+  .dev-mode-container {
+    display: none;
+  }
+
+  /* Main content area */
+  .main {
+    padding: 16px;
+    overflow-y: visible;
+    flex: 1 1 auto;
+  }
+
+  .top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .top-bar h1 {
+    font-size: 22px;
+  }
+
+  /* Dashboard cards: single column on small screens */
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .dash-card {
+    padding: 18px;
+  }
+
+  .card-val {
+    font-size: 26px;
+  }
+
+  /* Keep/notes/todo masonry grid: single column */
+  .keep-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .keep-tile {
+    min-height: auto;
+  }
+
+  .panel-body {
+    padding: 16px;
+  }
+
+  .panel-tabs .tab {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  /* Excel-style tables: allow horizontal scroll, shrink padding */
+  .excel-table-wrapper {
+    max-height: 450px;
+  }
+
+  .excel-table th,
+  .excel-table td {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .excel-table th:first-child,
+  .excel-table td:first-child {
+    min-width: 140px;
+  }
+
+  /* Input stacks (Add Target, etc.) become single column */
+  .input-stack {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  /* Study panel timers stack vertically instead of 2-up */
+  #panel-study > div[style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .timer-container {
+    padding: 20px;
+  }
+
+  .timer-digits {
+    font-size: 44px;
+  }
+
+  .editable-timer-input {
+    font-size: 36px;
+    width: 80px;
+  }
+
+  /* Todo/note compose row stacks vertically */
+  #compose-todos-block-panel .panel-body > div[style*="display:flex"] {
+    flex-direction: column;
+  }
+
+  #compose-todos-block-panel .panel-body > div[style*="display:flex"] button {
+    justify-content: center;
+  }
+
+  /* Access gateway overlay padding fix for small screens */
+  #access-gateway-overlay > div {
+    padding: 28px 20px;
+    width: 90%;
+  }
+}
+
+@media (max-width: 420px) {
+  .nav-item {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .sidebar-logo {
+    font-size: 14px;
+    padding: 0 12px;
+  }
+
+  .timer-digits {
+    font-size: 36px;
+  }
+}
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght=400;500;700&display=swap" rel="stylesheet">
